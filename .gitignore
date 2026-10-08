@@ -1,0 +1,9 @@
+config.json
+data/
+vps-widget
+*.log
+server.log
+server.pid
+.adminpass
+.port
+.DS_Store

@@ -1,0 +1,14 @@
+services:
+  vps-widget:
+    image: ghcr.io/syuim/vps-widget:latest
+    container_name: vps-widget
+    ports:
+      - "${HOST_PORT:-5555}:5555"
+    environment:
+      # 首次启动时用于初始化面板密码（config.json 已存在密码后此项被忽略）
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-}
+      # 配置与数据统一持久化到挂载的 data 目录
+      - CONFIG_PATH=/app/data/config.json
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
